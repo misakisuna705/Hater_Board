@@ -1,0 +1,48 @@
+html {
+  min-height: 680px;
+}
+
+textarea {
+  resize: none;
+}
+
+.logbox {
+  display: none;
+  margin: 20vh auto;
+}
+
+.social-login {
+  justify-content: space-between;
+}
+
+.facebook-btn {
+  background-color: #3c589c;
+}
+
+.google-btn {
+  background-color: #df4b3b;
+}
+
+.station {
+  background-color: #666666;
+  height: calc(100% - 56px);
+}
+
+.post_edit_box {
+  display: none;
+}
+
+.push_edit_box {
+  display: none;
+}
+
+.edit_button {
+  display: none;
+  border-radius: 35px;
+  bottom: 30px;
+  font-size: 24px;
+  height: 70px;
+  position: fixed;
+  right: 30px;
+  width: 70px;
+}

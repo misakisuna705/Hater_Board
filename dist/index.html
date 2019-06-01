@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+
+<html class="h-100" lang="zh-tw">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+
+    <title>Hater Board</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+
+    <link rel="stylesheet" type="text/css" href="res/css/style.css">
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.11.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.11.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.11.0/firebase-database.js"></script>
+
+    <script src="res/js/config.js"></script>
+    <script src="res/js/init.js"></script>
+    <script src="res/js/sign.js"></script>
+    <script src="res/js/select.js"></script>
+    <script src="res/js/top_box.js"></script>
+    <script src="res/js/post_list.js"></script>
+    <script src="res/js/push_list.js"></script>
+    <script src="res/js/edit.js"></script>
+  </head>
+
+  <body class="h-100">
+    <nav class="navbar navbar-dark bg-dark">
+      <a class="navbar-brand" href="index.html">Hater Board</a>
+
+      <button class="navbar-toggler p-0 border-0" type="button" data-toggle="collapse" data-target="#navbartogglelist">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse nav_list" id="navbartogglelist">
+        <ul class="navbar-nav">
+          <li id="status">
+            <div class="flex-column room_next" id="room_next">
+              <a class="nav-link beauty_next" id="beauty_next">Beauty</a>
+              <a class="nav-link boy_girl_next" id="boy_girl_next">Boy-Girl</a>
+              <a class="nav-link c_chat_next" id="c_chat_next">C_Chat</a>
+              <a class="nav-link gossiping_next" id="gossiping_next">Gossiping</a>
+              <a class="nav-link joke_next" id="joke_next">joke</a>
+              <a class="nav-link lifeismoney_next" id="lifeismoney_next">Lifeismoney</a>
+              <a class="nav-link stock_next" id="stock_next">Stock</a>
+              <a class="nav-link stupidclown_next" id="stupidclown_next">StupidClown</a>
+            </div>
+
+            <a class="nav-link" id="user_account">Account</a>
+            <a class="nav-link" id="user_state">Sign</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <div class="d-flex board">
+      <nav class="btn-group-vertical w-25 room" id="room" role="group">
+        <button class="btn btn-secondary beauty" id="beauty" type="button">
+          Beauty
+        </button>
+        <button class="btn btn-secondary boy_girl" id="boy_girl" type="button">
+          Boy-Girl
+        </button>
+        <button class="btn btn-secondary c_chat" id="c_chat" type="button">
+          C_Chat
+        </button>
+        <button class="btn btn-secondary gossiping" id="gossiping" type="button">
+          Gossiping
+        </button>
+        <button class="btn btn-secondary joke" id="joke" type="button">
+          joke
+        </button>
+        <button class="btn btn-secondary lifeismoney" id="lifeismoney" type="button">
+          Lifeismoney
+        </button>
+        <button class="btn btn-secondary stock" id="stock" type="button">
+          Stock
+        </button>
+        <button class="btn btn-secondary stupidclown" id="stupidclown" type="button">
+          StupidClown
+        </button>
+      </nav>
+
+      <div class="container">
+        <div class="list-group h-100" id="post_top">
+          <div class="logbox" id="logbox">
+            <div class="social-login d-flex">
+              <button class="btn facebook-btn my-2 text-white" id="facebook_sign_in" type="button">
+                <span><i class="fab fa-facebook-f"></i> Sign in with Facebook</span>
+              </button>
+              <button class="btn google-btn my-2 text-white" id="google_sign_in" type="button">
+                <span><i class="fab fa-google-plus-g"></i> Sign in with
+                  Google</span>
+              </button>
+            </div>
+
+            <input class="form-control my-2" id="email" type="email" placeholder="email">
+            <input class="form-control my-2" id="password" type="password" placeholder="password">
+
+            <button class="btn btn-success btn-block my-3" id="email_login" type="submit">
+              <i class="fas fa-sign-in-alt"></i> Log in
+            </button>
+            <button class="btn btn-primary btn-block" id="email_sign_up" type="button">
+              <i class="fas fa-user-plus"></i> Sign up
+            </button>
+          </div>
+        </div>
+
+        <div class="list-group" id="post_list"></div>
+
+        <div class="list-group" id="push_list"></div>
+
+        <div class="p-3 rounded post_edit" id="post_edit">
+          <h6>Type</h6>
+          <textarea class="form-control" id="post_type" rows="1"></textarea>
+
+          <h6>Title</h6>
+          <textarea class="form-control" id="post_title" rows="1"></textarea>
+
+          <h6>Content</h6>
+          <textarea class="form-control" id="post_content" rows="15"></textarea>
+
+          <div class="pt-3">
+            <button class="btn btn-success" id="post_summit" type="button">
+              Submit
+            </button>
+          </div>
+        </div>
+
+        <div class="p-3 rounded push_edit" id="push_edit">
+          <h6>Content</h6>
+          <textarea class="form-control" id="push_content" rows="15"></textarea>
+
+          <div class="container">
+            <div class="row" id="push_summit">
+              <div class="col pt-3">
+                <button class="btn btn-success" id="push_good" type="button">
+                  Good
+                </button>
+              </div>
+
+              <div class="col align-self-center pt-3">
+                <button class="btn btn-danger" id="push_bad" type="button">
+                  Bad
+                </button>
+              </div>
+
+              <div class="col align-self-center pt-3">
+                <button class="btn btn-info" id="push_soso" type="button">
+                  Soso
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <button class="btn btn-secondary edit_button" id="edit_button" type="button">
+          <i class="fas fa-pen" id="edit_icon"></i>
+        </button>
+      </div>
+    </div>
+  </body>
+</html>
