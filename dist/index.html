@@ -18,14 +18,7 @@
     <script src="https://www.gstatic.com/firebasejs/5.11.0/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/5.11.0/firebase-database.js"></script>
 
-    <script src="res/js/config.js"></script>
-    <script src="res/js/init.js"></script>
-    <script src="res/js/sign.js"></script>
-    <script src="res/js/select.js"></script>
-    <script src="res/js/top_box.js"></script>
-    <script src="res/js/post_list.js"></script>
-    <script src="res/js/push_list.js"></script>
-    <script src="res/js/edit.js"></script>
+    <script src="script.min.js"></script>
   </head>
 
   <body class="h-100">
@@ -57,7 +50,7 @@
       </div>
     </nav>
 
-    <div class="d-flex board">
+    <div class="d-flex station">
       <nav class="btn-group-vertical w-25 room" id="room" role="group">
         <button class="btn btn-secondary beauty" id="beauty" type="button">
           Beauty
@@ -86,27 +79,22 @@
       </nav>
 
       <div class="container">
-        <div class="list-group h-100" id="post_top">
+        <div class="list-group h-100" id="top_box">
           <div class="logbox" id="logbox">
             <div class="social-login d-flex">
               <button class="btn facebook-btn my-2 text-white" id="facebook_sign_in" type="button">
                 <span><i class="fab fa-facebook-f"></i> Sign in with Facebook</span>
               </button>
               <button class="btn google-btn my-2 text-white" id="google_sign_in" type="button">
-                <span><i class="fab fa-google-plus-g"></i> Sign in with
-                  Google</span>
+                <span><i class="fab fa-google-plus-g"></i> Sign in with Google</span>
               </button>
             </div>
 
             <input class="form-control my-2" id="email" type="email" placeholder="email">
             <input class="form-control my-2" id="password" type="password" placeholder="password">
 
-            <button class="btn btn-success btn-block my-3" id="email_login" type="submit">
-              <i class="fas fa-sign-in-alt"></i> Log in
-            </button>
-            <button class="btn btn-primary btn-block" id="email_sign_up" type="button">
-              <i class="fas fa-user-plus"></i> Sign up
-            </button>
+            <button class="btn btn-success btn-block my-3" id="email_login" type="submit"><i class="fas fa-sign-in-alt"></i> Log in</button>
+            <button class="btn btn-primary btn-block" id="email_sign_up" type="button"><i class="fas fa-user-plus"></i> Sign up</button>
           </div>
         </div>
 
@@ -114,7 +102,7 @@
 
         <div class="list-group" id="push_list"></div>
 
-        <div class="p-3 rounded post_edit" id="post_edit">
+        <div class="p-3 rounded post_edit_box" id="post_edit_box">
           <h6>Type</h6>
           <textarea class="form-control" id="post_type" rows="1"></textarea>
 
@@ -131,7 +119,7 @@
           </div>
         </div>
 
-        <div class="p-3 rounded push_edit" id="push_edit">
+        <div class="p-3 rounded push_edit_box" id="push_edit_box">
           <h6>Content</h6>
           <textarea class="form-control" id="push_content" rows="15"></textarea>
 
